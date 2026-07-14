@@ -1,28 +1,42 @@
 const SPREADSHEET_ID = '1oysqlawFci8tK2UQdQ3InmHV8rq7cq9pFapMoQJ7Jcc'
 const TITLE_SHEET_GID = '0'
-const CURRICULUM_SHEET_GID = '1792668032'
 
 const spreadsheetUrl = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/edit`
-const titleRangeUrl = (range) => `${spreadsheetUrl}#gid=${TITLE_SHEET_GID}&range=${range}`
-const curriculumUrl = `${spreadsheetUrl}#gid=${CURRICULUM_SHEET_GID}`
+
+const programFolders = {
+  '루키 캠프 오프닝 & 미션 브리핑': 'https://drive.google.com/drive/folders/1aZjKcYfLzFkaVl-5_M1nAG_46B2-CY2p',
+  '루키의 팀 빌딩 & 팀 워밍업': 'https://drive.google.com/drive/folders/18OBQFll3mQ30U6l-cXS0_yjr3OcSZTb7',
+  '문제 발견 및 정의 워크숍': 'https://drive.google.com/drive/folders/1fp-1z5Zolnmu97KY9D6wsWItgVgLtvA9',
+  'AI 솔루션 기획 & 설계 스케치': 'https://drive.google.com/drive/folders/1BncdhvSBKZ_TvoEoYC0d4iGKd4K1m8ly',
+  '카카오 크루 특강 & 사옥 투어': 'https://drive.google.com/drive/folders/1iMTd8yapz8WQg_UK_TT9p6tgOguxBWkr',
+  '피지컬 AI 엔지니어링 기초': 'https://drive.google.com/drive/folders/1eQDGBxq5i-DR9GHFuDyl4RKdpDdhrtlS',
+  'AI 웹앱 백엔드 빌드업': 'https://drive.google.com/drive/folders/1wx_RIHi8g8irRKOiaGCEJLhcf-skCP1I',
+  '프로젝트 아키텍처 빌드업': 'https://drive.google.com/drive/folders/13SSV0uZZSW0iC7oBcRrWpdaUjq12EDWc',
+  '빌드 스프린트 1: 작동시키기': 'https://drive.google.com/drive/folders/1nSia3Rhgfoe2cKDliPTYk-CMQGk7juAd',
+  '빌드 스프린트 2: 완성시키기': 'https://drive.google.com/drive/folders/1gqzGFeVOG23nE4Zjiw5xv1L61gxiQoEH',
+  '프리-쇼케이스 발표 & 피드백': 'https://drive.google.com/drive/folders/14YtFO2vKNl6SAx6f-dH8v9LZcNGCyG_n',
+  '쇼케이스 준비': 'https://drive.google.com/drive/folders/1t6d2KWXOofKNE62G-zNUSKEyqqOYG7A2',
+  '프로젝트 최종 성과 발표': 'https://drive.google.com/drive/folders/1dgu8PcLzO4xouYvOsKcT50QS_yfP2tSw',
+  '수료식': 'https://drive.google.com/drive/folders/12iwdGuwLY2z_oWoRiKgeUwlDUMg90iJJ',
+}
 
 export const sourceLinks = {
   spreadsheet: `${spreadsheetUrl}#gid=${TITLE_SHEET_GID}`,
   resources: [
-    { index: '00', label: '총괄', icon: 'people', range: 'A3' },
-    { index: '01', label: '마케팅', icon: 'megaphone', range: 'A4' },
-    { index: '02', label: '선발', icon: 'clipboard', range: 'A5' },
-    { index: '03', label: '커리큘럼', icon: 'book', range: 'A6' },
-    { index: '04', label: '제작물', icon: 'image', range: 'A7' },
-    { index: '05', label: '공간 기획', icon: 'building', range: 'A8' },
-    { index: '06', label: '현장 운영', icon: 'map', range: 'A9' },
-    { index: '07', label: '사진·영상 아카이빙', icon: 'camera', range: 'A10' },
-    { index: '08', label: '운영·CS', icon: 'message', range: 'A11' },
-    { index: '09', label: '1기 데모 영상', icon: 'video', range: 'A12' },
-    { index: '10', label: 'AI 캠프스 문서', icon: 'file', range: 'A13' },
-    { index: '11', label: '캠프 운영', icon: 'clipboard', range: 'A14' },
-    { index: '12', label: '프로그램', icon: 'calendar', range: 'A15' },
-  ].map((resource) => ({ ...resource, url: titleRangeUrl(resource.range) })),
+    { index: '00', label: '총괄', icon: 'people', url: 'https://drive.google.com/drive/folders/10MhuUSprIBuRhME4IaoV-3h23lUSGVEn' },
+    { index: '01', label: '마케팅', icon: 'megaphone', url: 'https://drive.google.com/drive/folders/1rXGW-EaPFdbbilyt7DtTElB4zULttmoM' },
+    { index: '02', label: '선발', icon: 'clipboard', url: 'https://drive.google.com/drive/folders/1bnHGQKvKw6Yz-KI4uQDWvBdmCWC8pLiJ' },
+    { index: '03', label: '커리큘럼', icon: 'book', url: 'https://drive.google.com/drive/folders/1J92dRI3VYcWsfdYWTTb1zfSkwjtu4YaN' },
+    { index: '04', label: '제작물', icon: 'image', url: 'https://drive.google.com/drive/folders/1dLizXseBaI8CHe4cDt1UPik3m1f-UZai' },
+    { index: '05', label: '공간 기획', icon: 'building', url: 'https://drive.google.com/drive/folders/1e5oYi5bgZN6yIIUwHNt-KlUrgJ2zJG_E' },
+    { index: '06', label: '현장 운영', icon: 'map', url: 'https://drive.google.com/drive/folders/1mVCLTIfVIdNTvDAu98COY6XpujfS6AsB' },
+    { index: '07', label: '사진·영상 아카이빙', icon: 'camera', url: 'https://drive.google.com/drive/folders/1e5DXSiahFMeYjBr5zEdhZHd924vBMREh' },
+    { index: '08', label: '운영·CS', icon: 'message', url: 'https://drive.google.com/drive/folders/1XFOX69GfM9YtiefcXNMQvt7BOYLJgzer' },
+    { index: '09', label: '1기 데모 영상', icon: 'video', url: 'https://drive.google.com/drive/folders/1t0FceDM18ONqoXt8ODnT55-8f1vAmSce' },
+    { index: '10', label: 'AI 캠프스 문서', icon: 'file', url: 'https://drive.google.com/drive/folders/1NKb7aQ9jW3hgTXNbJfBUfE0v0Ao8rDPE' },
+    { index: '11', label: '캠프 운영', icon: 'clipboard', url: 'https://drive.google.com/drive/folders/1vEgrI1OphOCqVN9OBJAyRgc1WqxEIWH4' },
+    { index: '12', label: '프로그램', icon: 'calendar', url: 'https://drive.google.com/drive/folders/1n1sgAabMPD9dsdSEIKhublr7gmeyJ2WZ' },
+  ],
 }
 
 export const days = [
@@ -32,7 +46,7 @@ export const days = [
   { number: 4, title: 'UNPACK', tone: 'purple' },
 ]
 
-const program = (event) => ({ ...event, url: curriculumUrl })
+const program = (event) => ({ ...event, url: programFolders[event.title] })
 
 export const schedule = [
   { day: 1, start: 12, end: 13, title: '점심 식사', type: 'meal' },
@@ -69,7 +83,7 @@ export const schedule = [
     detail: '문제정의를 넘어 솔루션 기획으로',
     owner: '메이',
   }),
-  program({ day: 1, start: 21, end: 22, title: '데일리 멘토링' }),
+  { day: 1, start: 21, end: 22, title: '데일리 멘토링', type: 'break' },
 
   { day: 2, start: 8, end: 9, title: '아침 식사', type: 'meal' },
   program({
@@ -106,7 +120,7 @@ export const schedule = [
     detail: '솔루션 완성을 위한 첫 단계',
     owner: '앨런',
   }),
-  program({ day: 2, start: 21, end: 22, title: '데일리 멘토링' }),
+  { day: 2, start: 21, end: 22, title: '데일리 멘토링', type: 'break' },
 
   { day: 3, start: 8, end: 9, title: '아침 식사', type: 'meal' },
   program({
@@ -143,7 +157,7 @@ export const schedule = [
     detail: '마지막 여정을 위한 최종 점검',
     owner: '메이',
   }),
-  program({ day: 3, start: 21, end: 22, title: '데일리 멘토링' }),
+  { day: 3, start: 21, end: 22, title: '데일리 멘토링', type: 'break' },
 
   { day: 4, start: 8, end: 9, title: '아침 식사', type: 'meal' },
   program({
