@@ -9,7 +9,7 @@ function App() {
       <header className="app-header">
         <div className="brand-block">
           <div>
-            <h1>카카오 AI 루키 캠프 2기</h1>
+            <h1>AI 루키 캠프 콘텐츠 가이드 맵</h1>
             <p>3박 4일 프로그램 일정표</p>
           </div>
         </div>
